@@ -6,7 +6,11 @@ Return the frequency of element x in the given array
 """
 def findFrequency (arr, n, x):
     # Your Code Here
-    return arr.count(x)
+    cnt = 0
+    for a in arr:
+        if a == x:
+            cnt += 1
+    return cnt
 
 
 #{ 
