@@ -3,16 +3,23 @@
 class Solution:
     def sort012(self,arr,n):
         # code here
-        # z,o,t = 0,0,0
+        z,o,t = 0,0,0
         
-        # for a in arr:
-        #     if a == 0:
-        #         z += 1
-        #     elif a == 1:
-        #         o += 1
-        #     elif a==2:
-        #         t += 1
-        arr[:] = sorted(arr)
+        for a in arr:
+            if a == 0:
+                z += 1
+            elif a == 1:
+                o += 1
+            elif a==2:
+                t += 1
+        
+        arr[0:z] = [0]*z
+        arr[z:z+o] = [1]*o
+        arr[z+o:] = [2]*t
+        
+        return arr
+        
+        
         
 
 
