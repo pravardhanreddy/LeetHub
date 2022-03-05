@@ -1,23 +1,12 @@
 #User function Template for python3
-
+from collections import Counter
 class Solution:
     def sort012(self,arr,n):
         # code here
-        z,o,t = 0,0,0
-        
-        for a in arr:
-            if a == 0:
-                z += 1
-            elif a == 1:
-                o += 1
-            elif a==2:
-                t += 1
-        
-        arr[0:z] = [0]*z
-        arr[z:z+o] = [1]*o
-        arr[z+o:] = [2]*t
-        
-        return arr
+        c = Counter(arr)
+        arr[:c[0]] = [0]*c[0]
+        arr[c[0]:c[0]+c[1]] = [1]*c[1]
+        arr[c[0]+c[1]:] = [2]*c[2] 
         
         
         
