@@ -10,11 +10,11 @@ class Solution:
         cum = 0
         for i in range(n):
             cum += arr[i]
-            if cum in s or cum == 0:
+            if cum in s:
                 return True
             else:
                 s.add(cum)
-        return False
+        return 0 in s
 
 #{ 
 #  Driver Code Starts
