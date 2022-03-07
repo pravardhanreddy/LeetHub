@@ -1,6 +1,17 @@
 #User function Template for python3
 from collections import Counter
 class Solution:
+    
+    def cnt(self, arr):
+        m = len(arr)
+        if arr[m-1] == 0:
+            return 0
+        if arr[0]:
+            return m
+        if arr[m//2]:
+            return (m - m//2) + self.cnt(arr[:m//2])
+        else:
+            return self.cnt(arr[(m//2)+1:m])
 
 	def rowWithMax1s(self,arr, n, m):
 		# code here
@@ -8,7 +19,7 @@ class Solution:
 		mi = -1
 		
 		for i in range(n):
-            c = Counter(arr[i])[1]
+            c = self.cnt(arr[i])
             if c > m:
                 m = c
                 mi = i
