@@ -20,14 +20,19 @@ class Solution:
             return right
         if not right:
             return left
-        if left.val <= right.val:
-            result = left
-            result.next = self.sortedMerge(left.next, right)
-        else:
-            result = right
-            result.next = self.sortedMerge(left, right.next)
-        return result
-        
+        result = ListNode(None)
+        head = result
+        while left and right:
+            if left.val <= right.val:
+                result.next = left
+                left = left.next
+            else:
+                result.next = right
+                right = right.next
+            result = result.next
+        result.next = left if left else right
+        return head.next
+                    
     def sortList(self, A):
         if not (A and A.next):
             return A
