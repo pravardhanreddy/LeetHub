@@ -16,11 +16,14 @@ class Solution:
     def levelOrderBottom(self, A):
         if not A:
             return []
-        ans = [[] for i in range(self.height(A))]
+        # ans = [[] for i in range(self.height(A))]
+        ans = []
         h = 0
         def travel(root, ans, h):
             if not root:
                 return
+            if h == len(ans):
+                ans.append([])
             ans[h].append(root.val)
             h += 1
             travel(root.left, ans, h)
