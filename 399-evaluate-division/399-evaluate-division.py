@@ -37,5 +37,11 @@ class Solution:
                 
             else:
                 visited = set()
-                ans.append(search(a,b,d,v, visited, 1.0))
+                res = search(a,b,d,v, visited, 1.0)
+                ans.append(res)
+                if res != -1.0:
+                    d[a].append(b)
+                    d[b].append(a)
+                    v[(a,b)] = res
+                    v[(b,a)] = 1/res
         return ans
