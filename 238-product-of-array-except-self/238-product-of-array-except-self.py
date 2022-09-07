@@ -1,13 +1,15 @@
 from collections import deque
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        front = [1]
-        back = deque()
-        back.append(1)
-        n = len(nums)
-        for i in range(len(nums) - 1):
-            front.append(front[i] * nums[i])
-            back.appendleft(back[0] * nums[n - i - 1])
+        res = [1] * len(nums)
         
-        return [front[i] * back[i] for i in range(n)]
+        pre = 1
+        for i in range(len(nums)):
+            res[i] = pre
+            pre *= nums[i]
+        suf = 1
+        for i in range(len(nums)-1, -1, -1):
+            res[i] *= suf
+            suf *= nums[i]
+        return res
         
