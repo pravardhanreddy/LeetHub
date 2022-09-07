@@ -1,15 +1,14 @@
 from collections import deque
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        res = [1] * len(nums)
+        n = len(nums)
+        res = [1] * n
         
-        pre = 1
-        for i in range(len(nums)):
-            res[i] = pre
+        pre,suf = 1,1
+        for i in range(n):
+            res[i] *= pre
             pre *= nums[i]
-        suf = 1
-        for i in range(len(nums)-1, -1, -1):
-            res[i] *= suf
-            suf *= nums[i]
+            res[n-i-1] *= suf
+            suf *= nums[n-i-1]
         return res
         
