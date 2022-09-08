@@ -7,21 +7,25 @@
 from collections import deque
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        d = dict()
-        h = 0
-        maxh = [-1]
-        def travel(root, h, maxh, d):
-            if not root:
-                return
-            if h > maxh[0]:
-                maxh[0] = h
-                d[h] = [root.val]
-            else:
-                d[h].append(root.val)
-            travel(root.left, h+1, maxh, d)
-            travel(root.right, h+1, maxh, d)
-        travel(root, h, maxh, d)
-        return [d[i] for i in range(maxh[0] + 1)]
+        q = deque()
+        if not root:
+            return []
+        q.append(root)
+        ans = []
+        while q:
+            n = len(q)
+            level = []
+            while n > 0:
+                node = q.popleft()
+                n -= 1
+                level.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            ans.append(level)
+        return ans
+        
         
             
         
