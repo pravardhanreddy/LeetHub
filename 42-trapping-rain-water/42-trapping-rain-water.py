@@ -8,12 +8,12 @@ class Solution:
         
         while l <= r:
             if maxL < maxR:
-                ans += max(0, maxL - height[l])
                 maxL = max(maxL, height[l])
+                ans += maxL - height[l]
                 l += 1
             else:
-                ans += max(0, maxR - height[r])
                 maxR = max(maxR, height[r])
+                ans +=maxR - height[r]
                 r -= 1
         return ans
                 
