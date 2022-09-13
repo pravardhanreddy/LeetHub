@@ -4,7 +4,6 @@ class Solution:
             return True
         
         need = 1
-        satisfied = True
         
         for i in range(len(nums) - 2, 0, -1):
             if nums[i] < need:
