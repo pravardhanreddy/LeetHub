@@ -1,6 +1,6 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        l = r = 0
+        r = 0
         maxsub = 0
         maxsofar = nums[0]
         
@@ -10,6 +10,5 @@ class Solution:
             r += 1
             if maxsub < 0:
                 maxsub = 0
-        if maxsofar == 0:
-            return max(nums)
+
         return maxsofar
