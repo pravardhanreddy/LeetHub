@@ -4,23 +4,19 @@ class Solution:
         if numRows < 2:
             return s
         
-        mat = [['']*numRows]
+        mat = ['']*numRows
         
-        i, j, k = 0, 0, 0
+        j, k = 0, 0
+        step = 1
         while k < len(s):
-            mat[i][j] = s[k]
+            mat[j] += s[k]
             
             k += 1
             
-            if i % (numRows-1) or j == numRows-1:
-                mat.append(['']*numRows)
-                i += 1
-                j -= 1
-            else:
-                j += 1
+            if j == numRows-1:
+                step = -1
+            elif j == 0:
+                step = 1
+            j += step
         
-        ans = ''
-        for j in range(numRows):
-            for i in range(len(mat)):
-                ans += mat[i][j]
-        return ans
+        return ''.join(mat)
