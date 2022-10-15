@@ -3,11 +3,11 @@ class Solution:
         if m < n:
             m,n = n,m
             
-        if n == 1:
-            return 1
+#         if n == 1:
+#             return 1
         
-        if n == 2:
-            return m
+#         if n == 2:
+#             return m
         
         num,den = 1,1
         for i in range(1, n):
