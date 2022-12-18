@@ -9,20 +9,19 @@ class Solution:
         total = 0
         hm = collections.defaultdict(list)
         
-        res = []
+        res = 0
         
         for i in range(len(arr)):
             total += arr[i]
             
             if total == 0:
-                res.append((0,i))
+                res += 1
             
             if total in hm:
-                for prev in hm[total]:
-                    res.append((prev+1, i))
+                res += len(hm[total])
             
             hm[total].append(i)
-        return len(res)
+        return res
 
 #{ 
  # Driver Code Starts
